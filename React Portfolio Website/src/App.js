@@ -56,7 +56,8 @@ function App() {
   objectFit:"cover",
 transform:"translate(-50%,-50%)",
 zIndex:"-1" }
-    } class="video-bg">
+    } class="video-bg"
+    playsinline >
   
       <source src={videoSrc} type ="video/mp4"/>
     </video>

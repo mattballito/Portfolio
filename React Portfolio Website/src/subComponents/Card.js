@@ -127,6 +127,33 @@ const Link = styled(NavLink)`
     color: ${(props) => props.theme.body};
   }
 `;
+
+const LinkTag = styled.a`
+  background-color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
+  text-decoration: none;
+  padding: 0.5rem calc(2rem + 2vw);
+  border-radius: 0 0 0 50px;
+  font-size: calc(1em + 0.5vw);
+
+  ${Box}:hover & {
+    background-color: ${(props) => props.theme.text};
+    color: ${(props) => props.theme.body};
+  }
+`;
+
+const GitTag = styled.a`
+color: inherit;
+text-decoration: none;
+
+${Box}:hover & {
+  & > * {
+    fill: ${(props) => props.theme.text};
+  }
+}
+`;
+
+
 const Git = styled(NavLink)`
   color: inherit;
   text-decoration: none;
@@ -158,12 +185,12 @@ const Card = (props) => {
         ))}
       </Tags>
       <Footer>
-        <Link to={{ pathname: `${demo}` }} target="_blank">
+        <LinkTag href={demo} target="_blank">
           Visit
-        </Link>
-        <Git to={{ pathname: `${github}` }} target="_blank">
+        </LinkTag>
+        <GitTag href={github} target="_blank">
           <Github width={30} height={30} />
-        </Git>
+        </GitTag>
       </Footer>
     </Box>
   );
