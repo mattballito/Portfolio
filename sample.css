@@ -51,6 +51,7 @@
     border: 1px solid black;
     display: inline-block;
     position: relative;
+    background-color: transparent;
 }
 
 video {
@@ -79,6 +80,10 @@ video {
     margin-top: 0%;
     margin-left: 0%;
     margin-right: 0%;
+}
+
+.aboutButton {
+  background-color: transparent;
 }
 
 
