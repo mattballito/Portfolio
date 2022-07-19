@@ -54,6 +54,7 @@ const MainContainer = styled(motion.div)`
 
 const Container = styled.div`
   padding: 2rem;
+  
 `;
 
 const rotate = keyframes`
@@ -103,7 +104,32 @@ const Center = styled.button`
 
 
 
+const LinkTag = styled.a`
+color: ${(props) => (props.click ? props.theme.body : props.theme.text)};
+position: absolute;
+top: 2rem;
+right: calc(0.5rem + 3vw);
+text-decoration: none;
+z-index: 1;
 
+border-radius: 4px;
+opacity: 0.9;
+
+border-radius: 1px;
+opacity: 0.8;
+filter: alpha(opacity=20); 
+background-color: transparent;
+background-size:100%;
+color: #651480;
+text-align: center;
+font-size: 15px;
+padding: 5px;
+width: 50px;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
+
+`;
 
 
 const Contact = styled(NavLink)`
@@ -223,32 +249,32 @@ const SKILLS = styled(NavLink)`
 
 
 const DarkDiv = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 50%;
-  width: ${(props) => (props.click ? "50%" : "0%")};
-  background-color: #000000;
-  height: ${(props) => (props.click ? "100%" : "0%")};
-  transition: height 0.5s ease, width 1s ease 0.5s;
-  z-index: 1;
-  
+position: absolute;
+top: 0;
+background-color: #000;
+bottom: 0;
+right: 50%;
+width: ${props => props.click ? '50%' : '0%'};
+height: ${props => props.click ? '100%' : '0%'};
+z-index:1;
+transition: height 0.5s ease, width 1s ease 0.5s;
 
-  ${(props) =>
-    props.click
-      ? mediaQueries(50)`
-       height: 50%;
-  right:0;
-  
-  width: 100%;
-  transition: width 0.5s ease, height 1s ease 0.5s;
 
-  `
-      : mediaQueries(50)`
-       height: 0;
-  
-  width: 0;
-  `};
+${(props) =>
+  props.click
+    ? mediaQueries(50)`
+     height: 50%;
+right:0;
+
+width: 100%;
+transition: width 0.5s ease, height 1s ease 0.5s;
+`
+    : mediaQueries(50)`
+     height: 0;
+
+width: 0;
+`};
+
 `;
 
 
@@ -340,10 +366,13 @@ const Main = () => {
           
 
           {mq ? (
-            <Contact
+            <>
+            </>
+          ) : (
+            <LinkTag
               click={+click}
               target="_blank"
-              to={{ pathname: "mailto:mbutner@csu.fullerton.edu" }}
+              href={"mailto:mbutner@csu.fullerton.edu" }
             >
               <motion.h3
                 initial={{
@@ -357,36 +386,47 @@ const Main = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                Say hi
+                <button class="button"><span >Contact Me</span> </button>
                 
               </motion.h3>
-            </Contact>
-          ) : (
-            <Contact
-              click={+false}
-              target="_blank"
-              to={{ pathname: "mailto:mbutner@csu.fullerton.edu" }}
-            >
-              <motion.h3
-                initial={{
-                  y: -200,
-                  transition: { type: "spring", duration: 1.5, delay: 1 },
-                }}
-                animate={{
-                  y: 0,
-                  transition: { type: "spring", duration: 1.5, delay: 1 },
-                }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <button class="button"><span>Contact Me</span> </button>
-                
-              </motion.h3>
-            </Contact>
+            </LinkTag>
           )}
 
           {mq ? (
-            <BLOG click={+click} onClick={() => setpath("blog")} to="/blog">
+            
+            <>{/* for blog1*/}
+            </>
+              
+          ) : (
+            
+            <>{/* for blog2*/}
+            </>
+            
+          )}
+    
+          
+
+          <BottomBar>
+            {/* used to be ABOUT*/}
+
+            
+          </BottomBar>
+        </Container>
+        {click ? <Intro click={click} /> : null}
+  
+      </MainContainer>
+      
+    </Suspense>
+  );
+};
+
+export default Main;
+
+
+/*
+
+
+<BLOG click={+click} onClick={() => setpath("blog")} to="/blog">
               <motion.h2
                 initial={{
                   y: -200,
@@ -402,7 +442,11 @@ const Main = () => {
                 Blog
               </motion.h2>
             </BLOG>
-          ) : (
+
+
+
+
+
             <BLOG click={+false} onClick={() => setpath("blog")} to="/blog">
               
               <motion.h2
@@ -417,15 +461,26 @@ const Main = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <button class="button"><span>Blog</span> </button>
+                <button class="button"><span>Blog</span> </button> 
               </motion.h2>
               
               
             </BLOG>
-            
-          )}
-    
-          <WORK click={+click} to="/work">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <WORK click={+click} to="/work">
             <motion.h2
               onClick={() => setpath("work")}
               initial={{
@@ -440,11 +495,13 @@ const Main = () => {
               whileTap={{ scale: 0.9 }}
             >
               <button class="button"><ButtonWrap>Work</ButtonWrap> </button>
-            </motion.h2>
-          </WORK>
+              </motion.h2>
+              </WORK>
 
-          <BottomBar>
-            <ABOUT
+
+
+
+              <ABOUT
               onClick={() => setClick(false)}
               click={mq ? +false : +click}
               to="/about"
@@ -462,9 +519,12 @@ const Main = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <button class="button"><div className="aboutButton">About</div> </button>
+                {<button class="button"><div className="aboutButton">About</div> </button> }
               </motion.h2>
             </ABOUT>
+
+
+
 
             <SKILLS to="/skills">
               <motion.h2
@@ -481,16 +541,6 @@ const Main = () => {
                 whileTap={{ scale: 0.9 }}
               >
                 <button class="button"><span>My Skills</span> </button>
-              </motion.h2>
-            </SKILLS>
-          </BottomBar>
-        </Container>
-        {click ? <Intro click={click} /> : null}
-  
-      </MainContainer>
-      
-    </Suspense>
-  );
-};
-
-export default Main;
+                </motion.h2>
+                </SKILLS>
+*/

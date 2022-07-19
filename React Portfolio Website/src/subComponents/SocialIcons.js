@@ -7,6 +7,12 @@ import { NavLink } from "react-router-dom";
 import { DarkTheme, mediaQueries } from "../components/Themes";
 
 
+
+const LinkTag = styled.a`
+  
+`;
+
+
 const Icons = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,9 +61,10 @@ const SocialIcons = (props) => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <NavLink
-          style={{ color: "inherit" }}
+        <LinkTag
+          href={"https://github.com/mattballito"} 
           target="_blank"
+          style={{ color: "inherit" }}
           to={{ pathname: "https://github.com/mattballito" }}
         >
           <Github
@@ -67,7 +74,7 @@ const SocialIcons = (props) => {
               props.theme === "dark" ? `${DarkTheme.text}` : `${DarkTheme.body}`
             }
           />
-        </NavLink>
+        </LinkTag>
       </motion.div>
       <motion.div
         initial={{ transform: "scale(0)" }}
@@ -76,10 +83,10 @@ const SocialIcons = (props) => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <NavLink
+        <LinkTag
           style={{ color: "inherit" }}
           target="_blank"
-          to={{ pathname: "https://www.linkedin.com/in/mattballbutner/" }}
+          href={ "https://www.linkedin.com/in/mattballbutner/" }
         >
           <LinkedInSmall
             width={30}
@@ -88,7 +95,7 @@ const SocialIcons = (props) => {
               props.theme === "dark" ? `${DarkTheme.text}` : `${DarkTheme.body}`
             }
           />
-        </NavLink>
+        </LinkTag>
       </motion.div>
       
       <motion.div
@@ -98,13 +105,10 @@ const SocialIcons = (props) => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <NavLink
+        <LinkTag
           style={{ color: "inherit" }}
           target="_blank"
-          to={{
-            pathname:
-              "https://www.youtube.com/channel/UCeyW8AKBW5LwkCW_Vm_oHgw",
-          }}
+          href={"https://www.youtube.com/channel/UCeyW8AKBW5LwkCW_Vm_oHgw"}
         >
           <YouTube
             width={25}
@@ -113,7 +117,7 @@ const SocialIcons = (props) => {
               props.theme === "dark" ? `${DarkTheme.text}` : `${DarkTheme.body}`
             }
           />
-        </NavLink>
+        </LinkTag>
       </motion.div>
 
       <Line

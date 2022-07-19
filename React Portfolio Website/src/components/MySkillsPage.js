@@ -197,7 +197,7 @@ const MySkillsPage = () => {
             <Description>
               <strong>Front-End</strong> <br />
               <p>
-                HTML, CSS, JS, React, Redux, Bootstrap
+                React, Redux, Bootstrap
               </p>
               <strong>Back-End</strong> <br />
               <p>

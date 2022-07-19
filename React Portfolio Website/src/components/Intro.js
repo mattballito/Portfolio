@@ -19,7 +19,7 @@ const Line = styled(motion.span)`
 
 
 const Box = styled(motion.div)`
-  /* width: 50vw;
+/* width: 50vw;
 height:50vh;
  */
   width: 55vw;
@@ -109,58 +109,58 @@ height:50vh;
 
 
 const SubBox = styled.div`
-  width: 50%;
-  position: relative;
-  display: flex;
-  .pic {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0%);
+width: 50%;
+position: relative;
+display: flex;
+.pic {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 100%;
+  height: auto;
+}
+${mediaQueries(50)`
     width: 100%;
-    height: auto;
-  }
-  ${mediaQueries(50)`
-      width: 100%;
-    height: 50%;
-      .pic {
-    
-    width: 70%;
-    
-  }
-
-  `};
-
-  ${mediaQueries(40)`
+  height: 50%;
+    .pic {
   
-      .pic {
-    
-    width: 80%;
-    
-  }
+  width: 70%;
+  
+}
 
-  `};
+`};
 
-  ${mediaQueries(30)`
-     
+${mediaQueries(40)`
 
-      .pic {
-    
-    width: 90%;
-    
-  }
+    .pic {
+  
+  width: 80%;
+  
+}
 
-  `};
-  ${mediaQueries(20)`
-     
+`};
 
-     .pic {
+${mediaQueries(30)`
    
-   width: 80%;
-   
- }
 
- `};
+    .pic {
+  
+  width: 90%;
+  
+}
+
+`};
+${mediaQueries(20)`
+   
+
+   .pic {
+ 
+ width: 80%;
+ 
+}
+
+`};
 `;
 
 
@@ -213,42 +213,82 @@ const BLOG = styled(NavLink)`
 `;
 
 const Text = styled(motion.div)`
-  font-size: calc(1rem + 0.9vw);
-  color: ${(props) => props.theme.body};
-  padding: 2rem;
-  cursor: default;
+font-size: calc(0.7rem + 0.8vw);
+color: ${(props) => props.theme.body};
+padding: 0.9rem;
+cursor: pointer;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+display: flex;
+flex-direction: column;
+justify-content: center;
 
-  & > *:last-child {
-    color: ${(props) => `rgba(${props.theme.bodyRgba},0.6)`};
+& > *:last-child {
+  color: ${(props) => `rgba(${props.theme.bodyRgba},0.6)`};
 
-    font-size: calc(0.5rem + 1.5vw);
-    font-weight: 300;
-
-    ${mediaQueries(40)`
-        font-size: calc(0.5rem + 1vw);
-
-
-  `};
-  }
+  font-size: calc(0.5rem + 1.5vw);
+  font-weight: 300;
 
   ${mediaQueries(40)`
-        font-size: calc(1rem + 1.5vw);
+      font-size: calc(0.5rem + 1vw);
 
 
-  `};
-  ${mediaQueries(20)`
-         padding: 1rem;
+`};
+}
+
+${mediaQueries(40)`
+      font-size: calc(0.5rem + 0.8vw);
+
+
+`};
+${mediaQueries(20)`
+       padding: 1rem;
 
 
 
-  `};
+`};
 `;
 
+const NoClickText = styled(motion.div)`
+font-size: calc(0.7rem + 0.8vw);
+color: ${(props) => props.theme.body};
+padding: 0.9rem;
+cursor: none;
 
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+& > *:last-child {
+  color: ${(props) => `rgba(${props.theme.bodyRgba},0.6)`};
+
+  font-size: calc(0.5rem + 1.5vw);
+  font-weight: 300;
+
+  ${mediaQueries(40)`
+      font-size: calc(0.5rem + 1vw);
+
+
+`};
+}
+
+${mediaQueries(40)`
+      font-size: calc(0.5rem + 0.8vw);
+
+
+`};
+${mediaQueries(20)`
+       padding: 1rem;
+
+
+
+`};
+`;
+
+const myBitmoji = styled.img`
+  src={OtherMe}; 
+  alt="My Pic";
+  padding:0.9rem;
+`;
 
 
 
@@ -283,7 +323,7 @@ const Intro = () => {
       setHeight("70vh");
     }
     if (window.matchMedia("(max-width: 20em)").matches) {
-      setHeight("60vh");
+      setHeight("50vh");
     }
   }, []);
   return (
@@ -291,10 +331,10 @@ const Intro = () => {
       initial={{ height: 0 }}
       animate={{ height: height }}
       transition={{ type: "spring", duration: 2, delay: 1 }}
-    >
+    className="MainBox">
       <SubBox>
         <Text>
-
+        <center align="center" margin-bottom="30px">
         <motion.h2
                   
                   initial={{
@@ -308,14 +348,31 @@ const Intro = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <h1>Hi, </h1>
-                  <h3> I'm Matt.</h3>
-                  <h6>I'm a fourth year computer science student and I build full stack applications. Check out my work! </h6>
-                </motion.h2>
+                  
+                  
+                    <NoClickText >
+                      <>
+                      Hi,
+                      I'm Matt.
+                      I'm a fourth year computer science student and I build full stack applications. Check out my work!
+                      </>
+                    </NoClickText >
+                      
 
+                    
+                  
+
+                  
+
+                  
+                  
+                </motion.h2>
+                </center>
 
           
-          <ul class="listName">
+          <div className="selection-list">
+          <ul class="listName" >
+            <Text>
             <li>
               
               <ABOUT
@@ -443,12 +500,18 @@ const Intro = () => {
             
       
             </li>
+            </Text>
+            
           </ul>
+          </div>
+          </Text>
+          
+          
           
 
           
           
-        </Text>
+        
           
           {/*<SocialIconRow theme="dark" />*/}
           
@@ -467,7 +530,8 @@ const Intro = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 2 }}
         >
-          <img className="pic" src={OtherMe} alt="My Pic" />
+          <img className="pic" src={OtherMe} alt="My Pic" >  
+          </img>
         </motion.div>
       </SubBox>
     </Box>

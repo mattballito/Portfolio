@@ -56,8 +56,9 @@ function App() {
   objectFit:"cover",
 transform:"translate(-50%,-50%)",
 zIndex:"-1" }
-    } class="video-bg"
-    playsinline >
+    } className="video-bg"
+    playsinline 
+    poster="https://cdn.photographylife.com/wp-content/uploads/2014/06/Nikon-D810-Image-Sample-6.jpg">
   
       <source src={videoSrc} type ="video/mp4"/>
     </video>
